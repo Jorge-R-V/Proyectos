@@ -3,174 +3,294 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jorge | Portfolio</title>
+    <meta name="description" content="Portfolio y enlaces de Jorge - Frontend Developer">
     <link rel="stylesheet" href="./assets/output.css" />
   </head>
 
-  <body class="max-w-xl mx-auto min-h-dvh bg-gray-500">
-    <header>
-      <img
-        alt="Jorge"
-        src="./assets/usuario-icematte_161669-211.webp"
-        class="block mx-auto h-[50vh] aspect-square object-cover rounded-full mask-radial-at-center mask-radial-from-45% mask-radial-to-80% animate-pulse-fade-in"
-      />
+  <body class="bg-slate-950 text-white min-h-dvh relative overflow-x-hidden font-display selection:bg-purple-500/30">
+    <!-- Animated Background Orbs -->
+    <div class="fixed inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none">
+      <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-blob"></div>
+      <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-8 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-blob animation-delay-4000"></div>
+    </div>
 
-      <div class="flex flex-col justify-center items-center mb-8 -mt-4">
-        <span
-          class="text-sky-400 text-xl font-mono px-3 py-1 border border-sky-500/50 rounded-full flex items-center justify-center shadow-sm bg-black/65 cursor-crosshair z-10"
-        >
-          @jorge
-          <svg
-            class="ml-1 w-5 h-5 text-sky-400 inline"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            aria-hidden="true"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707a1 1 0 00-1.414-1.414L9 11.172l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </span>
-      </div>
+    <!-- Main Container -->
+    <div class="relative z-10 max-w-7xl mx-auto pt-16 px-4 pb-16 min-h-dvh flex flex-col items-center">
+      <!-- Profile Header -->
+      <!-- Profile Header -->
+      <header class="flex flex-col items-center w-full animate-slide-up-fade mb-6">
+        <div class="relative mt-4">
+          <div class="absolute -inset-2 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full blur-md opacity-60"></div>
+          <img
+            alt="Jorge"
+            src="./assets/usuario-icematte_161669-211.webp"
+            class="relative w-52 h-52 object-cover rounded-full border-4 border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.5)] bg-slate-900"
+          />
+        </div>
 
-      <section class="flex gap-2 justify-center">
-        <a
-          class="bg-purple-100 social-button animate-slide-up-fade"
-          href="https://twitch.tv/"
-          target="_blank"
-          aria-label="Twitch"
-          title="Ir a Twitch de @Jorge"
-        >
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#twitch" />
-          </svg>
+        <div class="mt-8 flex flex-col items-center gap-3">
+          <span class="px-8 py-3 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-2xl font-bold tracking-widest flex items-center gap-3 shadow-[0_0_20px_rgba(255,255,255,0.05)] text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300 select-none">
+            Jorge
+            <svg class="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707a1 1 0 00-1.414-1.414L9 11.172l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <h1 class="text-white/60 text-sm md:text-base font-medium tracking-wide uppercase text-center max-w-2xl leading-relaxed">Full Stack Developer | Systems Administrator <br class="hidden md:block"/> Web Apps, Cloud & IT Infrastructure</h1>
+        </div>
+      </header>
+
+      <!-- Social Links -->
+      <section class="flex gap-4 justify-center mb-16 w-full z-20">
+        <a class="social-button hover:bg-white/20 hover:border-white/50 animate-slide-up-fade" href="https://github.com/Jorge-R-V" target="_blank" aria-label="GitHub" title="GitHub">
+          <svg width="24" height="24"><use xlink:href="./assets/sprite.svg#github" /></svg>
         </a>
-
-        <a
-          class="bg-zinc-900 social-button animate-slide-up-fade animate-delay-100"
-          href="https://github.com/"
-          target="_blank"
-          aria-label="GitHub"
-          title="Ir a GitHub de @Jorge"
-        >
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#github" />
-          </svg>
-        </a>
-
-        <a
-          class="social-button animate-slide-up-fade animate-delay-200 bg-gradient-to-tr from-yellow-300 via-pink-600 to-purple-600"
-          href="https://instagram.com"
-          target="_blank"
-          aria-label="Instagram"
-          title="Ir a Instagram de @Jorge"
-        >
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#instagram" />
-          </svg>
-        </a>
-
-        <a
-          class="bg-black social-button animate-slide-up-fade animate-delay-400"
-          href="https://x.com/?lang=es"
-          target="_blank"
-          aria-label="X"
-          title="Ir a X de @Jorge"
-        >
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#x" />
-          </svg>
-        </a>
-
-        <a
-          class="bg-white social-button animate-slide-up-fade animate-delay-500"
-          href="https://es.linkedin.com/"
-          target="_blank"
-          aria-label="LinkedIn"
-          title="Ir a LinkedIn de @Jorge"
-        >
-          <svg width="28" height="28">
-            <use xlink:href="./assets/sprite.svg#linkedin" />
-          </svg>
+        <a class="social-button hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/50 hover:text-[#0A66C2] animate-slide-up-fade" style="animation-delay: 100ms;" href="https://es.linkedin.com/in/jorge-rodríguez-villarrubia-719597220" target="_blank" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="24" height="24"><use xlink:href="./assets/sprite.svg#linkedin" /></svg>
         </a>
       </section>
 
-      <main class="pt-4 px-4 pb-16">
-        <div class="grid grid-cols-3 grid-rows-2 gap-2 w-full">
-          <a
-            href="https://github.com/"
-            class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-900 via-cyan-700 to-cyan-500 border border-cyan-900 flex flex-col items-start hover:scale-105 hover:contrast-125 transition group col-span-2 p-7 min-h-[180px]"
-          >
-            <span
-              class="absolute bottom-2 left-4 font-bold text-2xl group-hover:-translate-y-1 transition-transform"
-              >React.js</span
-            >
+                  <!-- Technologies Structured View -->
+      <main class="w-full flex flex-col items-center">
+        <h2 class="text-3xl font-bold mb-6 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-white/50 animate-slide-up-fade">Tecnologías</h2>
 
-            <svg
-              class="absolute -right-4 -bottom-4 -rotate-6 size-28 group-hover:-rotate-12 group-hover:scale-125 transition-transform"
-              width="100"
-              height="100"
-            >
-              <use xlink:href="./assets/sprite.svg#react" />
-            </svg>
-          </a>
+        <!-- Professional Tabs Menu -->
+        <nav class="flex flex-wrap justify-center gap-2 mb-12 animate-slide-up-fade" style="animation-delay: 100ms;">
+          <button data-filter="all" class="px-6 py-2 rounded-full border border-white/20 bg-white/10 text-white text-sm font-medium tracking-wide transition-all hover:bg-white/20">Todos</button>
+          <button data-filter="frontend" class="px-6 py-2 rounded-full border border-transparent text-white/50 text-sm font-medium tracking-wide transition-all hover:text-white hover:bg-white/10">Frontend</button>
+          <button data-filter="backend" class="px-6 py-2 rounded-full border border-transparent text-white/50 text-sm font-medium tracking-wide transition-all hover:text-white hover:bg-white/10">Backend</button>
+          <button data-filter="databases" class="px-6 py-2 rounded-full border border-transparent text-white/50 text-sm font-medium tracking-wide transition-all hover:text-white hover:bg-white/10">Bases de Datos</button>
+          <button data-filter="devops" class="px-6 py-2 rounded-full border border-transparent text-white/50 text-sm font-medium tracking-wide transition-all hover:text-white hover:bg-white/10">Infraestructura & DevOps</button>
+          <button data-filter="methodologies" class="px-6 py-2 rounded-full border border-transparent text-white/50 text-sm font-medium tracking-wide transition-all hover:text-white hover:bg-white/10">Metodologías</button>
+        </nav>
+        
+        <div class="w-full flex flex-col gap-12">
 
-          <a
-            href="https://github.com/"
-            class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-html via-orange-300 to-white border border-html flex flex-col items-start hover:scale-105 hover:contrast-125 transition group col-span-1 p-7 min-h-[180px]"
-          >
-            <span
-              class="absolute bottom-2 left-4 font-bold text-2xl group-hover:-translate-y-1 transition-transform"
-              >HTML</span
-            >
-
-            <svg
-              class="absolute -right-4 -bottom-4 -rotate-6 size-28 group-hover:-rotate-12 group-hover:scale-125 transition-transform"
-              width="100"
-              height="100"
-            >
-              <use xlink:href="./assets/sprite.svg#html" />
-            </svg>
-          </a>
-
-          <a
-            href="https://github.com/"
-            class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#663399] via-[#8e44ad] border border-[#663399] flex flex-col items-start hover:scale-105 hover:contrast-125 transition group col-span-1 p-7 min-h-[180px]"
-          >
-            <span
-              class="absolute bottom-2 left-4 font-bold text-2xl group-hover:-translate-y-1 transition-transform"
-              >CSS</span
-            >
-
-            <svg
-              class="absolute -right-4 -bottom-4 -rotate-6 size-28 group-hover:-rotate-12 group-hover:scale-125 transition-transform"
-              width="100"
-              height="100"
-            >
-              <use xlink:href="./assets/sprite.svg#css" />
-            </svg>
-          </a>
-
-          <a
-            href="https://github.com/"
-            class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#215732] via-[#3C873A] to-[#8CC84B] border border-[#215732] flex flex-col items-start hover:scale-105 hover:contrast-125 transition group col-span-2 p-7 min-h-[180px]"
-          >
-            <span
-              class="absolute bottom-2 left-4 font-bold text-2xl group-hover:-translate-y-1 transition-transform"
-              >Node.js</span
-            >
-
-            <svg
-              class="absolute -right-4 -bottom-4 -rotate-6 size-28 group-hover:-rotate-12 group-hover:scale-125 transition-transform"
-              width="100"
-              height="100"
-            >
-              <use xlink:href="./assets/sprite.svg#node" />
-            </svg>
-          </a>
+          <!-- Frontend Section -->
+          <section id="frontend" class="tech-section animate-slide-up-fade w-full">
+            <div class="flex items-center gap-4 mb-6">
+              <h3 class="text-xl font-bold text-white/80 tracking-tight">Frontend</h3>
+              <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#61DAFB]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="React.js">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#61DAFB]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">React.js</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#61DAFB]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#react" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#F7DF1E]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="JavaScript">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#F7DF1E]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">JavaScript</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#F7DF1E]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#javascript" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#3178C6]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="TypeScript">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#3178C6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">TypeScript</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#3178C6]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#typescript" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#E34F26]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="HTML">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#E34F26]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">HTML</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#E34F26]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#html" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#264de4]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="CSS">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#264de4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">CSS</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#264de4]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#css" />
+                </svg>
+              </a>
+            </div>
+          </section>
+          <!-- Backend Section -->
+          <section id="backend" class="tech-section animate-slide-up-fade w-full">
+            <div class="flex items-center gap-4 mb-6">
+              <h3 class="text-xl font-bold text-white/80 tracking-tight">Backend</h3>
+              <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#f8981d]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Java">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#f8981d]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Java</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#f8981d]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#java" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#3776AB]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Python">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#3776AB]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Python</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#3776AB]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#python" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#777BB4]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="PHP">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#777BB4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">PHP</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#777BB4]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#php" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#6DB33F]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Spring Boot">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#6DB33F]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Spring Boot</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#6DB33F]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#springboot" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#339933]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Node.js">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#339933]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Node.js</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#339933]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#node" />
+                </svg>
+              </a>
+            </div>
+          </section>
+          <!-- Bases de Datos Section -->
+          <section id="databases" class="tech-section animate-slide-up-fade w-full">
+            <div class="flex items-center gap-4 mb-6">
+              <h3 class="text-xl font-bold text-white/80 tracking-tight">Bases de Datos</h3>
+              <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#F80000]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Oracle">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#F80000]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Oracle</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#F80000]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#oracle" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#4169E1]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="PostgreSQL">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#4169E1]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">PostgreSQL</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#4169E1]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#postgresql" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#47A248]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="MongoDB">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#47A248]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">MongoDB</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#47A248]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#mongodb" />
+                </svg>
+              </a>
+            </div>
+          </section>
+          <!-- Infraestructura & DevOps Section -->
+          <section id="devops" class="tech-section animate-slide-up-fade w-full">
+            <div class="flex items-center gap-4 mb-6">
+              <h3 class="text-xl font-bold text-white/80 tracking-tight">Infraestructura & DevOps</h3>
+              <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#FCC624]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Linux">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#FCC624]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Linux</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#FCC624]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#linux" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#0078D6]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Windows Server">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#0078D6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Windows Server</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#0078D6]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#windows" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#0078D6]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Active Directory">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#0078D6]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Active Directory</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#0078D6]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#activedirectory" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#2496ED]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Docker">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#2496ED]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Docker</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#2496ED]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#docker" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#F05032]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Git">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#F05032]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Git</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#F05032]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#git" />
+                </svg>
+              </a>
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#ffffff]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="GitHub">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#ffffff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">GitHub</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#ffffff]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#github" />
+                </svg>
+              </a>
+            </div>
+          </section>
+          <!-- Metodologías Section -->
+          <section id="methodologies" class="tech-section animate-slide-up-fade w-full">
+            <div class="flex items-center gap-4 mb-6">
+              <h3 class="text-xl font-bold text-white/80 tracking-tight">Metodologías</h3>
+              <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              <a href="#" class="glass-panel group relative overflow-hidden rounded-2xl p-6 min-h-[140px] flex flex-col justify-end transition-all duration-300 hover:border-[#186A3B]/50 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]" aria-label="Scrum (Agile)">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#186A3B]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span class="relative z-10 font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-all">Scrum (Agile)</span>
+                <svg class="absolute -right-4 -bottom-4 -rotate-12 size-28 text-white/5 group-hover:text-[#186A3B]/20 group-hover:-rotate-6 group-hover:scale-110 transition-all duration-500" width="100" height="100">
+                  <use xlink:href="./assets/sprite.svg#scrum" />
+                </svg>
+              </a>
+            </div>
+          </section>
         </div>
+        
+        <!-- Filter Script -->
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('[data-filter]');
+            const sections = document.querySelectorAll('.tech-section');
+
+            buttons.forEach(btn => {
+              btn.addEventListener('click', () => {
+                // Reset active styles
+                buttons.forEach(b => {
+                  b.classList.remove('bg-white/10', 'text-white', 'border-white/20');
+                  b.classList.add('text-white/50', 'border-transparent');
+                });
+                
+                // Set active style on clicked button
+                btn.classList.remove('text-white/50', 'border-transparent');
+                btn.classList.add('bg-white/10', 'text-white', 'border-white/20');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                sections.forEach(sec => {
+                  if (filter === 'all' || sec.id === filter) {
+                    sec.style.display = 'block';
+                    // Retrigger animation
+                    sec.classList.remove('animate-slide-up-fade');
+                    void sec.offsetWidth;
+                    sec.classList.add('animate-slide-up-fade');
+                  } else {
+                    sec.style.display = 'none';
+                  }
+                });
+              });
+            });
+          });
+        </script>
+
       </main>
-    </header>
+    </div>
   </body>
 </html>

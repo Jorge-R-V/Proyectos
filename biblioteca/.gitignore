@@ -20,3 +20,6 @@ tmp/
 .classpath
 .externalToolBuilders/
 build/
+
+# Conexiones a base de datos (credenciales)
+src/main/java/conexiones/
