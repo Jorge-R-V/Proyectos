@@ -1,0 +1,64 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Listado de Alumnos{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+    <div>
+        <h1 class="text-3xl font-bold text-gray-800">Alumnos</h1>
+        <p class="text-gray-600">Gestión de estudiantes</p>
+    </div>
+    <form method="POST" class="mb-6">
+        {% if csrf_token %}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        {% endif %}
+        <div class="flex items-center gap-4">
+            <input type="text" name="dni" placeholder="Buscar por DNI/NIE" maxlength="10"
+                class="border border-gray-300 rounded-lg px-4 py-2 w-40 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                required />
+            <button type="submit"
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow">Buscar</button>
+        </div>
+    </form>
+    <a href="{{ url_for('alumno_form') }}"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition flex items-center gap-2">
+        <i class="fas fa-plus"></i> Nuevo Alumno
+    </a>
+</div>
+
+<div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+    {% if alumnos %}
+    <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left">
+            <thead class="bg-gray-100 text-gray-600 uppercase font-semibold">
+                <tr>
+                    <th class="py-3 px-6">DNI</th>
+                    <th class="py-3 px-6">Nombre</th>
+                    <th class="py-3 px-6">Apellidos</th>
+                    <th class="py-3 px-6">Alergias</th>
+                    <th class="py-3 px-6 text-right">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                {% for alumno in alumnos %}
+                <tr class="hover:bg-gray-50 transition">
+                    <td class="py-4 px-6 font-medium text-gray-900">{{ alumno.dni }}</td>
+                    <td class="py-4 px-6 text-gray-800">{{ alumno.nombre }}</td>
+                    <td class="py-4 px-6 text-gray-800">{{ alumno.apellidos }}</td>
+                    <td class="py-4 px-6 text-gray-600">{{ alumno.alergias or '-' }}</td>
+                    <td class="py-4 px-6 text-right">
+                        <a href="{{ url_for('alumno_editar', id=alumno._id) }}"
+                            class="text-blue-600 hover:text-blue-800 font-medium transition">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="p-10 text-center text-gray-500">
+        <p class="text-lg">No hay alumnos registrados.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

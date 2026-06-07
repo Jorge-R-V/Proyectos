@@ -1,0 +1,10 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Sass / CSS Sourcemaps (optional depending on git preferences, but typical to ignore generated maps)
+*.css.map

@@ -1,0 +1,21 @@
+{% macro render_field(field) %}
+  <div class="mb-5">
+    {{ field.label(class="block text-sm font-bold text-gray-800 mb-1.5") }}
+    
+    {% if field.type in ['StringField', 'PasswordField', 'DecimalField', 'IntegerField'] %}
+        {{ field(class="w-full bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 px-4 py-2.5 transition-all outline-none text-sm placeholder:text-gray-400 shadow-sm", **kwargs) }}
+    {% elif field.type == 'SelectField' %}
+        {{ field(class="w-full bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-blue-600 px-4 py-2.5 transition-all outline-none text-sm appearance-none shadow-sm", **kwargs) }}
+    {% else %}
+        {{ field(class="focus:ring-2 focus:ring-blue-600 rounded border-gray-300", **kwargs) }}
+    {% endif %}
+
+    {% if field.errors %}
+      <ul class="mt-1.5 text-xs text-red-600 font-bold">
+      {% for error in field.errors %}
+        <li><i class="fa-solid fa-circle-exclamation mr-1"></i> {{ error }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endmacro %}

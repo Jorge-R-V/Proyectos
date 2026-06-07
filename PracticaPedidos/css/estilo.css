@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.header-principal {
+    background-color: #418371;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.header-principal h1 {
+    text-align: center;
+    color: white;
+    font-size: 1.75rem;
+    margin: 0;
+}
+
+.contenido-principal {
+    margin-top: 3rem;
+}
+
+.contenedor-nueva-orden {
+    display: grid;
+}
+
+.contenedor-nueva-orden .btn-primary {
+    font-size: 1.25rem;
+    padding: .5rem 1rem;
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+}
+
+.seccion-platillos {
+    margin-top: 3rem;
+}
+
+#platillos h2,
+#resumen h2 {
+    color: #343a40;
+    text-align: center;
+}
+
+#resumen .contenido {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    padding: 1.5rem; 
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+
+.modal-body .form-label {
+    margin-bottom: .5rem;
+}
+
+.modal-body .form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.modal-body .mb-3 {
+    margin-bottom: 1rem;
+}

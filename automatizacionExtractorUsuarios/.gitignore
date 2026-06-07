@@ -1,0 +1,21 @@
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Instagram Session Files (contain credentials/keys)
+session_*
+
+# Data Extracts (scraped lists)
+*.csv
+
+# IDE Settings
+.vscode/
+.idea/

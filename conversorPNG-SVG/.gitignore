@@ -1,0 +1,24 @@
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Output / Input files
+entrada.jpg
+sin_fondo.png
+resultado.svg
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# IDE Settings
+.vscode/
+.idea/

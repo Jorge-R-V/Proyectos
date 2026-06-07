@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE payara-web-app SYSTEM "payara-web-app_4.dtd" >
+<payara-web-app>
+	<context-root>/biblioteca</context-root>
+	<parameter-encoding default-charset="UTF-8"></parameter-encoding>
+</payara-web-app>
