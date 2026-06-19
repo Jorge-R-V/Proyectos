@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - CineMax{% endblock %}
+
+{% block content %}
+<div class="space-y-12">
+    <div class="bg-white border border-slate-200 rounded-2xl p-8 md:p-16 text-center shadow-sm">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
+                Panel de Administración <span class="text-blue-600">CineMax</span>
+            </h1>
+            <p class="text-slate-600 mb-8 text-lg">
+                Gestiona la cartelera de forma sencilla. Controla los estrenos y las butacas disponibles desde este panel central.
+            </p>
+            
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="{{ url_for('read_peliculas') }}" class="px-6 py-3 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm">
+                    Ver Cartelera
+                </a>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('add_pelicula') }}" class="px-6 py-3 rounded-lg font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors">
+                    Añadir Película
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+                <p class="text-slate-500 text-xs font-bold uppercase tracking-wider mb-1">Total en Catálogo</p>
+                <p class="text-4xl font-bold text-slate-900">{{ total_peliculas|default(0) }}</p>
+                <p class="text-blue-600 text-sm mt-1">Películas publicadas</p>
+            </div>
+            <div class="h-12 w-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-xl border border-blue-100">
+                <i class="fa-solid fa-clapperboard"></i>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-slate-900 font-bold">Géneros Disponibles</h3>
+                <i class="fa-solid fa-chart-pie text-slate-400"></i>
+            </div>
+            {% if categorias %}
+            <div class="space-y-4">
+                {% for cat in categorias %}
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span class="text-slate-700 font-medium">{{ cat._id }}</span>
+                        <span class="text-slate-500 font-semibold">{{ cat.count }}</span>
+                    </div>
+                    {% set width = (cat.count / total_peliculas * 100)|round %}
+                    <div class="w-full bg-slate-100 rounded-full h-2">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: {{ width }}%"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center text-slate-400 py-4 text-sm italic">No hay datos por categoría.</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

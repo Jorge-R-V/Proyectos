@@ -1,0 +1,66 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Listado de Inscripciones{% endblock %}
+
+{% block content %}
+<div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+    <div>
+        <h1 class="text-3xl font-bold text-gray-800">Inscripciones</h1>
+        <p class="text-gray-600">Gestión de alumnos apuntados a excursiones</p>
+    </div>
+    <a href="{{ url_for('inscripcion_form') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition flex items-center gap-2">
+        <i class="fas fa-plus"></i> Nueva Inscripción
+    </a>
+</div>
+
+<div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+    {% if inscripciones %}
+    <div class="overflow-x-auto">
+        <table class="min-w-full text-sm text-left">
+            <thead class="bg-gray-100 text-gray-600 uppercase font-semibold">
+                <tr>
+                    <th class="py-3 px-6">Alumno</th>
+                    <th class="py-3 px-6">Excursión</th>
+                    <th class="py-3 px-6">Fecha</th>
+                    <th class="py-3 px-6 text-center">Estado Pago</th>
+                    <th class="py-3 px-6 text-right">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                {% for item in inscripciones %}
+                <tr class="hover:bg-gray-50 transition">
+                    <td class="py-4 px-6 font-medium text-gray-900">
+                        {{ item.alumno.nombre }} {{ item.alumno.apellidos }}
+                        <span class="block text-xs text-gray-500">{{ item.alumno.dni }}</span>
+                    </td>
+                    <td class="py-4 px-6 text-gray-800">{{ item.excursion.destino }}</td>
+                    <td class="py-4 px-6 text-gray-600">{{ item.excursion.fecha.strftime('%d/%m/%Y') }}</td>
+                    <td class="py-4 px-6 text-center">
+                        {% if item.estado_pago == 'S' %}
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Pagado</span>
+                        {% elif item.estado_pago == 'R' %}
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">Reserva</span>
+                        {% else %}
+                            <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">Pendiente</span>
+                        {% endif %}
+                    </td>
+                    <td class="py-4 px-6 text-right">
+                        <form method="POST" action="{{ url_for('cancelar_inscripcion', inscripcion_id=item._id) }}" onsubmit="return confirm('¿Estás seguro de cancelar esta inscripción?');" class="inline">
+                            {% if csrf_token %}<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% endif %}
+                            <button type="submit" class="text-red-500 hover:text-red-700 transition" title="Cancelar Inscripción">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="p-10 text-center text-gray-500">
+        <p class="text-lg">No hay inscripciones registradas.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

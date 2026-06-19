@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block title %}Iniciar Sesión - CineMax{% endblock %}
+
+{% block content %}
+<div class="h-full flex items-center justify-center min-h-[60vh]">
+    <div class="bg-white p-8 md:p-12 rounded-2xl max-w-sm w-full border border-slate-200 shadow-sm relative">
+        
+        <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600 text-2xl border border-blue-100">
+                <i class="fa-solid fa-right-to-bracket"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-900">¡Hola de nuevo!</h2>
+            <p class="text-sm text-slate-500 mt-1">Inicia sesión en tu cuenta</p>
+        </div>
+
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            
+            {{ render_field(form.email) }}
+            {{ render_field(form.password) }}
+
+            <button type="submit" class="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-sm transition-all active:scale-[0.98]">
+                {{ form.submit.label.text }}
+            </button>
+        </form>
+
+        <p class="text-center text-slate-500 text-sm mt-8">
+            ¿Aún no tienes cuenta? <a href="{{ url_for('registro') }}" class="text-blue-600 hover:text-blue-700 font-semibold transition-colors">Regístrate</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

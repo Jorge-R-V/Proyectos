@@ -1,0 +1,79 @@
+{% extends "layout/base.html" %}
+
+{% block title %}{{ 'Editar' if editar else 'Nueva' }} Excursión{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+    <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+        <h2 class="text-xl font-bold text-gray-800">{{ 'Editar' if editar else 'Nueva' }} Excursión</h2>
+    </div>
+
+    <form method="POST" action="" class="p-6">
+        {{ form.hidden_tag() }}
+
+        <!-- Destino -->
+        <div class="mb-4">
+            {{ form.destino.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+            {{ form.destino(class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight
+            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent") }}
+            {% if form.destino.errors %}
+            <p class="text-red-500 text-xs italic mt-1">{{ form.destino.errors[0] }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Fecha y Coste -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+                {{ form.fecha.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+                {{ form.fecha(class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700
+                leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+                type="date") }}
+                {% if form.fecha.errors %}
+                <p class="text-red-500 text-xs italic mt-1">{{ form.fecha.errors[0] }}</p>
+                {% endif %}
+            </div>
+            <div>
+                {{ form.coste.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+                {{ form.coste(class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700
+                leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+                type="number", step="0.01") }}
+                {% if form.coste.errors %}
+                <p class="text-red-500 text-xs italic mt-1">{{ form.coste.errors[0] }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Cupos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+                {{ form.cupo_maximo.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+                {{ form.cupo_maximo(class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700
+                leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent",
+                type="number") }}
+                {% if form.cupo_maximo.errors %}
+                <p class="text-red-500 text-xs italic mt-1">{{ form.cupo_maximo.errors[0] }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Profesor -->
+        <div class="mb-6">
+            {{ form.profesor.label(class="block text-gray-700 text-sm font-bold mb-2") }}
+            {{ form.profesor(class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700
+            leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent") }}
+            {% if form.profesor.errors %}
+            <p class="text-red-500 text-xs italic mt-1">{{ form.profesor.errors[0] }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Botones -->
+        <div class="flex items-center justify-end space-x-4">
+            <a href="{{ url_for('excursiones_list') }}"
+                class="text-gray-600 hover:text-gray-800 font-medium text-sm">Cancelar</a>
+            <button type="submit"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out">{{
+                'Actualizar' if editar else 'Guardar' }}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

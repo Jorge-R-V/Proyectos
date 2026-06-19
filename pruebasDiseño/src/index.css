@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-body: "Lora", serif;
+
+  /* Refined Rustic Palette */
+  --color-rustic-950: #0F0D0C; /* Deep Obsidian */
+  --color-rustic-900: #1C1917; /* Warm Charcoal */
+  --color-rustic-800: #2E2A27; 
+  --color-rustic-700: #443F3A; 
+  --color-rustic-600: #5C554F; 
+  --color-rustic-500: #786F66; 
+  --color-rustic-400: #968B80; 
+  --color-rustic-300: #B5A99F; 
+  --color-rustic-200: #D4CAC1; 
+  --color-rustic-100: #EBE4DD; /* Linen */
+  --color-rustic-50: #F7F3F0;  /* Bone/Paper */
+
+  /* Accents */
+  --color-accent-gold: #C69C6D;   /* Burnished Brass */
+  --color-accent-gold-light: #DFBD98;
+  --color-accent-moss: #3D4839;   /* Deep Forest Moss */
+  --color-accent-clay: #8B5E3C;   /* Earthy Terracotta */
+}
+
+@layer base {
+  html.lenis {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  body {
+    @apply font-body bg-rustic-50 text-rustic-900 antialiased selection:bg-accent-gold selection:text-rustic-950;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.wood-pattern {
+  background-color: #0F0D0C;
+  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+.glass-rustic {
+  @apply backdrop-blur-2xl border-b border-white/5;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.mask-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F0D0C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C69C6D;
+  border-radius: 10px;
+}

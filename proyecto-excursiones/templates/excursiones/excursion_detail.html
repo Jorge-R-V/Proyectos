@@ -1,0 +1,133 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Detalle Excursión - {{ excursion.destino }}{% endblock %}
+
+{% block content %}
+
+<div class="max-w-5xl mx-auto">
+    <!-- Encabezado -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+        <div>
+            <h2 class="text-3xl font-bold text-gray-800">{{ excursion.destino }}</h2>
+            <p class="text-gray-500">Detalles y gestión de inscripciones</p>
+        </div>
+        <a href="{{ url_for('excursion_editar', id=excursion._id) }}"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium shadow transition flex items-center gap-2">
+            <i class="fas fa-edit"></i> Editar Excursión
+        </a>
+        <a href="{{ url_for('reporte_completo_pdf', id=excursion._id) }}"
+            class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-medium shadow transition flex items-center gap-2">
+            <i class="fas fa-file-pdf"></i> Descargar Reporte Completo
+        </a>
+    </div>
+
+    <!-- Tarjeta de Información -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8 border border-gray-100">
+        <div class="p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div>
+                <p class="text-sm text-gray-500 uppercase font-semibold">Fecha</p>
+                <p class="text-lg text-gray-800 font-medium">{{ excursion.fecha.strftime('%d/%m/%Y') }}</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500 uppercase font-semibold">Profesor Responsable</p>
+                <p class="text-lg text-gray-800">{{ profesor.nombre }} {{ profesor.apellidos }}</p>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500 uppercase font-semibold">Cupo / Inscritos</p>
+                <div class="flex items-center gap-2">
+                    <span
+                        class="text-lg font-bold {{ 'text-red-600' if inscritos >= excursion.cupo_maximo else 'text-green-600' }}">{{
+                        inscritos }}</span>
+                    <span class="text-gray-400">/</span>
+                    <span class="text-lg text-gray-800">{{ excursion.cupo_maximo }}</span>
+                </div>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500 uppercase font-semibold">Coste</p>
+                <p class="text-lg text-gray-800 font-bold">{{ excursion.coste }} €</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de Alumnos -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+            <h3 class="font-semibold text-gray-700">Alumnos Inscritos</h3>
+        </div>
+
+        {% if alumnos %}
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-sm text-left">
+                <thead class="bg-gray-100 text-gray-600 uppercase font-semibold">
+                    <tr>
+                        <th class="py-3 px-6">Nombre</th>
+                        <th class="py-3 px-6">Apellidos</th>
+                        <th class="py-3 px-6 text-center">Estado Pago</th>
+                        <th class="py-3 px-6 text-right">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {% for alumno in alumnos %}
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="py-4 px-6 font-medium text-gray-900">{{ alumno.nombre }}</td>
+                        <td class="py-4 px-6 text-gray-600">{{ alumno.apellidos }}</td>
+                        <td class="py-4 px-6 text-center">
+                            {% if alumno.estado_pago in ["S", "P"] %}
+                            <span
+                                class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Pagado</span>
+                            {% elif alumno.estado_pago == "R" %}
+                            <span
+                                class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">Reserva</span>
+                            {% else %}
+                            <span
+                                class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">Pendiente</span>
+                            {% endif %}
+                        </td>
+                        <td class="py-4 px-6 text-right space-x-2">
+                            {% if current_user.role in ['admin', 'profesor'] %}
+                            <form method="POST"
+                                action="{{ url_for('cambiar_pago', inscripcion_id=alumno.inscripcion_id) }}"
+                                class="inline">
+                                {% if csrf_token %}<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{%
+                                endif %}
+                                {% if alumno.estado_pago in ["S", "P"] %}
+                                <button type="submit"
+                                    class="text-yellow-600 hover:text-yellow-800 font-medium text-sm transition"
+                                    title="Marcar como Pendiente">
+                                    <i class="fas fa-undo mr-1"></i> Desmarcar Pago
+                                </button>
+                                {% else %}
+                                <button type="submit"
+                                    class="text-green-600 hover:text-green-800 font-medium text-sm transition"
+                                    title="Marcar como Pagado">
+                                    <i class="fas fa-check-circle mr-1"></i> Confirmar Pago
+                                </button>
+                                {% endif %}
+                            </form>
+                            {% endif %}
+                            <form method="POST"
+                                action="{{ url_for('cancelar_inscripcion', inscripcion_id=alumno.inscripcion_id) }}"
+                                onsubmit="return confirm('¿Estás seguro de cancelar esta inscripción?');"
+                                class="inline">
+                                {% if csrf_token %}<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{%
+                                endif %}
+                                <button type="submit"
+                                    class="text-red-500 hover:text-red-700 font-medium text-sm transition">
+                                    <i class="fas fa-times-circle mr-1"></i> Cancelar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="p-8 text-center text-gray-500">
+            <p>No hay alumnos inscritos en esta excursión.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

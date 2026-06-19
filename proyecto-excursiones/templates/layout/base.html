@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestión de Excursiones{% endblock %}</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-2 font-bold text-xl hover:text-blue-200 transition">
+                    <i class="fas fa-bus-alt"></i>
+                    <span>ExcursionesApp</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('dashboard') }}"
+                        class="hover:text-blue-200 transition font-medium">Dashboard</a>
+                    {% if current_user.role == 'admin' or current_user.role == 'profesor' %}
+                    <a href="{{ url_for('alumnos_list') }}"
+                        class="hover:text-blue-200 transition font-medium">Alumnos</a>
+                    <a href="{{ url_for('profesores_list') }}"
+                        class="hover:text-blue-200 transition font-medium">Profesores</a>
+                    {% endif %}
+                    <a href="{{ url_for('excursiones_list') }}"
+                        class="hover:text-blue-200 transition font-medium">Excursiones</a>
+
+                    <a href="{{ url_for('inscripcion_form') }}"
+                        class="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-md text-sm font-semibold transition shadow border border-blue-600">
+                        <i class="fas fa-plus mr-1"></i> Inscripción
+                    </a>
+                    {% endif %}
+                </div>
+
+                <!-- User Menu -->
+                <div class="flex items-center gap-4">
+                    {% if current_user.is_authenticated %}
+                    <div class="flex items-center gap-2">
+                        <a href="{{ url_for('perfil') }}"
+                            class="text-sm text-blue-100 hover:text-white hidden sm:inline flex items-center gap-1">
+                            <i class="fas fa-user-circle"></i> {{ current_user.username }}
+                        </a>
+                        <span class="text-blue-400">|</span>
+                        <a href="{{ url_for('logout') }}" class="text-red-300 hover:text-red-100 transition"
+                            title="Cerrar Sesión">
+                            <i class="fas fa-sign-out-alt text-lg"></i>
+                        </a>
+                    </div>
+                    {% else %}
+                    <a href="{{ url_for('login') }}" class="hover:text-blue-200 font-medium">Iniciar Sesión</a>
+                    <a href="{{ url_for('register') }}"
+                        class="bg-white text-blue-900 hover:bg-blue-50 px-4 py-2 rounded-md font-semibold transition">Registro</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div id="flash-messages" class="mb-6 space-y-2 max-w-4xl mx-auto">
+            {% for category, message in messages %}
+            <div class="flash-alert p-4 rounded-lg shadow-sm flex items-center gap-3 transition-opacity duration-500
+                            {% if category == 'error' %} bg-red-100 text-red-800 border-l-4 border-red-500
+                            {% elif category == 'success' %} bg-green-100 text-green-800 border-l-4 border-green-500
+                            {% elif category == 'warning' %} bg-yellow-100 text-yellow-800 border-l-4 border-yellow-500
+                            {% else %} bg-blue-100 text-blue-800 border-l-4 border-blue-500
+                            {% endif %}">
+                <i class="fas 
+                                {% if category == 'error' %} fa-exclamation-circle
+                                {% elif category == 'success' %} fa-check-circle
+                                {% elif category == 'warning' %} fa-exclamation-triangle
+                                {% else %} fa-info-circle
+                                {% endif %}"></i>
+                <span>{{ message }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">&copy; 2026 Gestión de Excursiones. Todos los derechos reservados a Desplega2.</p>
+
+        </div>
+    </footer>
+
+    <script>
+        // Auto-hide flash messages after 5 seconds
+        document.addEventListener('DOMContentLoaded', () => {
+            const flashMessages = document.querySelectorAll('.flash-alert');
+            if (flashMessages.length > 0) {
+                setTimeout(() => {
+                    flashMessages.forEach(msg => {
+                        msg.style.opacity = '0';
+                        setTimeout(() => msg.remove(), 500); // 500ms is the duration of the transition
+                    });
+                }, 5000); // 5000ms = 5 seconds
+            }
+        });
+    </script>
+</body>
+
+</html>

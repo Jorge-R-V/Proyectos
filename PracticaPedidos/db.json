@@ -1,0 +1,40 @@
+{
+    "platillos": [
+        {
+            "nombre": "Pizza Chica",
+            "precio": 30,
+            "categoria": 1,
+            "id": 1
+        },
+        {
+            "nombre": "Hamburguesa de 5 jotas",
+            "precio": 100,
+            "categoria": 1,
+            "id": 2
+        },
+        {
+            "nombre": "Pizza Mediana",
+            "precio": 50,
+            "categoria": 1,
+            "id": 3
+        },
+        {
+            "nombre": "Rebanada de Pastel",
+            "precio": 30,
+            "categoria": 3,
+            "id": 4
+        },
+        {
+            "nombre": "Jugo de Naranja",
+            "precio": 15,
+            "categoria": 2,
+            "id": 5
+        },
+        {
+            "nombre": "Batido de chocolate con pistacho",
+            "precio": 50,
+            "categoria": 3,
+            "id": 6
+        }
+    ]
+}
