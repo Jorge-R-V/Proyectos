@@ -15,7 +15,7 @@ export const Hero = () => {
     <section id="inicio" className="relative h-screen flex items-center justify-center overflow-hidden bg-rustic-950">
       {/* Background Parallax Image */}
       <motion.div style={{ y: yImage, scale: scaleImage }} className="absolute inset-0">
-        <img src={heroImg} alt="Rustic Cabin Monolith" loading="eager" fetchpriority="high" className="w-full h-full object-cover opacity-75" />
+        <img src={heroImg} alt="Rustic Cabin Monolith" loading="eager" fetchPriority="high" className="w-full h-full object-cover opacity-75" />
         <div className="absolute inset-0 bg-gradient-to-b from-rustic-950/20 via-rustic-950/50 to-rustic-950" />
       </motion.div>
       

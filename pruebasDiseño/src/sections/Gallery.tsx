@@ -25,7 +25,7 @@ const GalleryCard = ({ item, index, offset, isActive, onSelect, onHoverChange }:
       rotateX: 0,
       scale: 1,
       opacity: 1,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
     },
     right: {
       x: "100%",
@@ -34,7 +34,7 @@ const GalleryCard = ({ item, index, offset, isActive, onSelect, onHoverChange }:
       rotateX: -5,
       scale: 0.8,
       opacity: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
     },
     left: {
       x: "-100%",
@@ -43,7 +43,7 @@ const GalleryCard = ({ item, index, offset, isActive, onSelect, onHoverChange }:
       rotateX: 5,
       scale: 0.8,
       opacity: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
     },
     hidden: {
       z: -2000,
