@@ -35,12 +35,6 @@ jobs:
           npm install
           npm run build
 
-      - name: Build proyectoGestorCalorias
-        working-directory: ./proyectoGestorCalorias
-        run: |
-          npm install
-          npm run build
-
       - name: Prepare deployment directory
         run: |
           mkdir _site
@@ -52,10 +46,6 @@ jobs:
           # Copy pruebasDiseño (the Vite build output)
           mkdir _site/pruebasDiseño
           cp -r pruebasDiseño/dist/* _site/pruebasDiseño/
-          
-          # Copy proyectoGestorCalorias
-          mkdir _site/proyectoGestorCalorias
-          cp -r proyectoGestorCalorias/dist/* _site/proyectoGestorCalorias/
           
           # Copy ProyectoGabineteAbogados
           mkdir _site/ProyectoGabineteAbogados
