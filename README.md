@@ -7,6 +7,9 @@ Bienvenido al monorepositorio que agrupa diversos proyectos de desarrollo de sof
 - **Simulador de Energía:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/simulador-energia/)
 - **Pruebas Diseño:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/pruebasDiseño/)
 - **Gabinete de Abogados:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/ProyectoGabineteAbogados/)
+- **GuitarLA:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/guitarLa-react-ts-main/)
+- **Porfolio:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/porfolio/)
+- **Práctica Pedidos:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/PracticaPedidos/)
 
 ---
 

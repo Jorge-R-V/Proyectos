@@ -35,6 +35,17 @@ jobs:
           npm install
           npm run build
 
+      - name: Build guitarLa
+        working-directory: ./guitarLa-react-ts-main
+        run: |
+          npm install
+          npm run build
+
+      - name: Build porfolio
+        working-directory: ./porfolio
+        run: |
+          npx @tailwindcss/cli -i ./input.css -o ./assets/output.css
+
       - name: Prepare deployment directory
         run: |
           mkdir _site
@@ -50,6 +61,18 @@ jobs:
           # Copy ProyectoGabineteAbogados
           mkdir _site/ProyectoGabineteAbogados
           cp -r ProyectoGabineteAbogados/* _site/ProyectoGabineteAbogados/
+          
+          # Copy guitarLa-react-ts-main
+          mkdir _site/guitarLa-react-ts-main
+          cp -r guitarLa-react-ts-main/dist/* _site/guitarLa-react-ts-main/
+          
+          # Copy porfolio
+          mkdir _site/porfolio
+          cp -r porfolio/* _site/porfolio/
+          
+          # Copy PracticaPedidos
+          mkdir _site/PracticaPedidos
+          cp -r PracticaPedidos/* _site/PracticaPedidos/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

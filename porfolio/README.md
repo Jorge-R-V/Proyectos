@@ -4,7 +4,9 @@ Página web minimalista y responsiva diseñada como porfolio de enlaces personal
 
 ---
 
-## Características
+## ✨ Características
+
+👉 **[Ver Aplicación en Vivo](https://Jorge-R-V.github.io/Proyectos/porfolio/)**
 
 - **Diseño Ultra-Moderno**: Estética de tarjeta de presentación con esquinas redondeadas y sombras suaves.
 - **Micro-Animaciones**: Implementación de efectos y animaciones dinámicas al pasar el cursor (hover) para mejorar el engagement del visitante.

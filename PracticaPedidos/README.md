@@ -1,4 +1,6 @@
-# Calculadora de Consumos y Propinas (PracticaPedidos)
+# 🍔 Calculadora de Consumos y Propinas
+
+👉 **[Ver Aplicación en Vivo](https://Jorge-R-V.github.io/Proyectos/PracticaPedidos/)** (PracticaPedidos)
 
 Aplicación web interactiva del lado del cliente diseñada para gestionar comandas en mesas de restaurantes, calcular consumos individuales y agregar propinas dinámicamente con desglose totalizado.
 
