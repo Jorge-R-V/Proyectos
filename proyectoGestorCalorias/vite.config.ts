@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: "/DIW/",
+  base: "/Proyectos/proyectoGestorCalorias/",
   server: {
     proxy: {
       '/api-usda': {

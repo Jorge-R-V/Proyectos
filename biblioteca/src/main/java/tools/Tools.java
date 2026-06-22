@@ -78,7 +78,7 @@ public class Tools {
 		st.append("<!DOCTYPE html>");
 		st.append("<html lang='es'>");
 		st.append("  <head>");
-		st.append("    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>");
+		st.append("    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta name="viewport" content="width=device-width, initial-scale=1.0">");
 		st.append("   <title>Correo de IES Azarquiel</title>");
 		st.append(" </head>");
 		st.append(" <body>");
@@ -186,7 +186,7 @@ public class Tools {
 
         StringBuilder st = new StringBuilder();
         st.append("<!DOCTYPE html><html lang='es'><head>")
-          .append("<meta charset='UTF-8'><title>Validación</title>")
+          .append("<meta charset='UTF-8'><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Validación</title>")
           .append("</head><body>")
           .append("Recibes este correo porque te has registrado en la aplicación <strong>Biblioteca</strong>.<br/>")
           .append("Para empezar a usarla, valida antes tu correo.<br/><br/>")
