@@ -2,6 +2,11 @@
 
 Bienvenido al monorepositorio que agrupa diversos proyectos de desarrollo de software. Este espacio contiene aplicaciones web, scripts de automatización, diseños de interfaz y herramientas de desarrollo, organizados en subcarpetas independientes.
 
+## 🚀 Proyectos Desplegados en Vivo
+
+- **Simulador de Energía:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/simulador-energia/)
+- **Pruebas Diseño:** [Ver Online](https://Jorge-R-V.github.io/Proyectos/pruebasDiseño/)
+
 ---
 
 ## Resumen de los Proyectos

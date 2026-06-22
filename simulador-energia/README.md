@@ -2,6 +2,8 @@
 
 Aplicación web interactiva desarrollada con **HTML, CSS y JavaScript** diseñada para estimar y modelar el consumo energético horario de una oficina o local comercial a lo largo de un mes específico.
 
+👉 **[Ver Aplicación en Vivo](https://Jorge-R-V.github.io/Proyectos/simulador-energia/)**
+
 ---
 
 ## 🚀 Funcionalidades Principales

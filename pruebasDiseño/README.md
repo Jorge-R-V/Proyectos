@@ -1,4 +1,8 @@
-# React + TypeScript + Vite
+# 🎨 Pruebas Diseño (React + Vite)
+
+Repositorio experimental para probar estilos de diseño, layouts responsivos y animaciones de componentes usando React y TailwindCSS.
+
+👉 **[Ver Aplicación en Vivo](https://Jorge-R-V.github.io/Proyectos/pruebasDiseño/)**
 
 Esta plantilla proporciona una configuración mínima para que React funcione en Vite con HMR (Hot Module Replacement) y algunas reglas de ESLint.
 
