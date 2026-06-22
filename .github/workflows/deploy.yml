@@ -44,6 +44,7 @@ jobs:
       - name: Build porfolio
         working-directory: ./porfolio
         run: |
+          npm install
           npx @tailwindcss/cli -i ./input.css -o ./assets/output.css
 
       - name: Prepare deployment directory
