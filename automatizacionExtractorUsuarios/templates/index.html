@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataExtractor | Panel de Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo"></div>
+                <span>DataExtractor</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#" class="nav-btn active" data-target="formPanel">Nueva Tarea</a>
+                <a href="#" class="nav-btn" data-target="historyPanel">Historial</a>
+                <a href="#" class="nav-btn" data-target="settingsPanel">Ajustes</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1 id="mainTitle">Extracción de Seguidores</h1>
+                    <p class="subtitle" id="mainSubtitle">Configure los parámetros para iniciar la recolección de datos.</p>
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- FORM PANEL -->
+                <div class="card panel active-panel" id="formPanel">
+                    <form id="extractorForm">
+                        <div class="section-title">1. Método de Operación</div>
+                        <div class="radio-group">
+                            <label class="radio-card">
+                                <input type="radio" name="method" value="Instaloader" checked>
+                                <div class="card-content">
+                                    <div class="radio-header">
+                                        <span class="method-title">Automático (API)</span>
+                                        <span class="badge badge-primary">Rápido</span>
+                                    </div>
+                                    <p>Utiliza Instaloader para extraer datos directamente. Requiere credenciales.</p>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="method" value="Selenium">
+                                <div class="card-content">
+                                    <div class="radio-header">
+                                        <span class="method-title">Escaneo Profundo</span>
+                                        <span class="badge badge-secondary">Seguro</span>
+                                    </div>
+                                    <p>Navegación manual vía Selenium. Menor riesgo de bloqueo.</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="section-title">2. Parámetros del Objetivo</div>
+                        <div class="form-group">
+                            <label for="target">Usuario Objetivo</label>
+                            <input type="text" id="target" name="target" placeholder="Ej: dtf.nometro" required>
+                        </div>
+
+                        <div id="credentialsFields">
+                            <div class="section-title">3. Credenciales de Acceso</div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="user">Usuario (Cuenta Secundaria)</label>
+                                    <input type="text" id="user" name="user" placeholder="Usuario para operar">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contraseña</label>
+                                    <input type="password" id="password" name="password" placeholder="••••••••">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="btnStart" style="width:100%">Iniciar Proceso</button>
+                        </div>
+                        
+                        <div id="seleniumActions" style="display: none; margin-top:20px;" class="selenium-actions">
+                            <div class="alert alert-info">
+                                <p id="seleniumHelper">1. Se abrirá una ventana. Inicie sesión y navegue a los seguidores del objetivo.<br>2. Presione el botón de abajo para capturar.</p>
+                            </div>
+                            <button type="button" class="btn btn-secondary" id="btnScan" style="width:100%" disabled>Capturar Datos</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- PROGRESS PANEL -->
+                <div class="card panel" id="progressPanel" style="display: none;">
+                    <div class="progress-header">
+                        <h2>Monitor de Proceso</h2>
+                        <span class="status-badge" id="statusText">
+                            <div class="spinner" id="spinner" style="display:inline-block; margin-right:8px; width:12px; height:12px; border:2px solid rgba(255,255,255,0.2); border-top-color:#fff; border-radius:50%; animation:spin 1s linear infinite;"></div>
+                            Procesando
+                        </span>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-title">Registros Extraídos</span>
+                            <span class="stat-value" id="countValue">0</span>
+                        </div>
+                    </div>
+
+                    <div class="terminal-container">
+                        <div class="terminal-header">Logs del Sistema</div>
+                        <div class="terminal" id="terminal"></div>
+                    </div>
+
+                    <div class="action-buttons" id="resultActions" style="display: none;">
+                        <button class="btn btn-success" id="btnDownload">Descargar CSV</button>
+                        <button class="btn btn-outline" id="btnNew">Nueva Tarea</button>
+                    </div>
+                </div>
+
+                <!-- HISTORY PANEL -->
+                <div class="card panel" id="historyPanel" style="display: none;">
+                    <table style="width:100%; border-collapse:collapse; text-align:left;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <th style="padding:12px; color:var(--text-secondary);">Fecha</th>
+                                <th style="padding:12px; color:var(--text-secondary);">Objetivo</th>
+                                <th style="padding:12px; color:var(--text-secondary);">Método</th>
+                                <th style="padding:12px; color:var(--text-secondary);">Usuarios</th>
+                                <th style="padding:12px; color:var(--text-secondary);">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <!-- Se llena por JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SETTINGS PANEL -->
+                <div class="card panel" id="settingsPanel" style="display: none;">
+                    <form id="settingsForm">
+                        <div class="section-title">Credenciales Predeterminadas</div>
+                        <div class="alert alert-info">
+                            <p>Guarde sus credenciales aquí para que se autocompleten al iniciar una nueva extracción con Instaloader.</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="defaultUser">Usuario Predeterminado</label>
+                            <input type="text" id="defaultUser" name="defaultUser" placeholder="Su usuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="defaultPassword">Contraseña Predeterminada</label>
+                            <input type="password" id="defaultPassword" name="defaultPassword" placeholder="Su contraseña">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="btnSaveSettings">Guardar Ajustes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <style>
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</body>
+</html>

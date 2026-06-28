@@ -1,52 +1,66 @@
-# Extractor de Usuarios de Instagram (automatizacionExtractorUsuarios)
+# DataExtractor - Automatización de Instagram
 
-Script desarrollado en **Python** que utiliza la biblioteca `instaloader` para extraer de manera automatizada y estructurada la lista de seguidores de una cuenta de Instagram específica, exportándolos directamente a un archivo CSV.
+Una potente herramienta de automatización diseñada para extraer de forma eficiente listas de seguidores de perfiles de Instagram. El sistema está construido en Python y ofrece **dos interfaces profesionales** (Web y Escritorio) para adaptarse a tus preferencias.
 
----
+## Características Principales
 
-## Funcionalidades Principales
-
-- **Inicio de Sesión Persistente**: Guarda la sesión del usuario secundario en un archivo local (`session_[usuario]`) para evitar inicios de sesión repetidos y reducir el riesgo de bloqueos por parte de Instagram.
-- **Validación Automática de Sesión**: Comprueba la validez de la sesión guardada y solicita un nuevo inicio de sesión automáticamente en caso de haber caducado.
-- **Búsqueda Robusta de Perfiles**: Estrategia de búsqueda que intenta encontrar el perfil por nombre de usuario directo o mediante los mejores resultados de búsqueda en caso de errores de API.
-- **Medidas de Seguridad**: Añade un retardo aleatorio (entre 4 y 7 segundos por usuario extraído) para emular comportamiento humano y mitigar el límite de solicitudes de la API de Instagram (Rate Limiting).
-- **Exportación en CSV**: Genera archivos CSV estructurados con los campos:
-  - `Username` (Nombre de usuario)
-  - `Full Name` (Nombre completo)
-  - `User ID` (ID único de usuario)
-  - `Is Verified` (Si la cuenta está verificada)
-  - `Is Private` (Si la cuenta es privada)
+1. **Interfaz Web Premium (Dashboard):** Un panel de control moderno tipo SaaS con tema oscuro (`Dark Mode`), barra lateral y animaciones limpias. 
+   - **Historial Integrado:** Guarda un registro de todas las extracciones exitosas y permite descargar los archivos CSV en cualquier momento.
+   - **Ajustes:** Permite guardar tus credenciales por defecto para que los formularios se autocompleten y ahorres tiempo.
+2. **Aplicación de Escritorio Nativa:** Una ventana de sistema ligera y rápida (creada con `customtkinter`) que incluye un selector de archivos visual para elegir exactamente dónde guardar tus datos.
+3. **Múltiples Métodos de Extracción:**
+   - **Automático (API / Instaloader):** Extracción directa a la máxima velocidad.
+   - **Escaneo Profundo (Selenium):** Ideal para extracciones seguras simulando navegación humana. Controlado por navegador Chrome.
 
 ---
 
-## Requisitos Técnicos
+## Instalación Automática (Recomendada)
 
-- **Python 3.8+**
-- Biblioteca `instaloader`
+Hemos preparado un instalador automatizado que preparará todo el entorno y creará iconos de acceso rápido para ti:
+
+1. Asegúrate de tener instalado **Python 3.8 o superior**.
+2. Entra en la carpeta del proyecto.
+3. Haz doble clic en el archivo `instalar.bat`.
+4. El sistema instalará automáticamente todas las librerías necesarias y al finalizar **creará dos accesos directos en tu Escritorio**:
+   - `Extractor de Seguidores (Escritorio)`
+   - `Extractor de Seguidores (Web)`
+
+## 🚀 Uso Rápido
+
+¡Una vez finalizada la instalación, ya no necesitas usar la consola! Simplemente usa los iconos que aparecieron en tu escritorio:
+
+- **Para usar la Interfaz Web:** Haz doble clic en el acceso directo del escritorio **"Extractor de Seguidores (Web)"**. Esto iniciará el servidor en segundo plano y te abrirá tu navegador automáticamente en la dirección correcta.
+- **Para usar la Interfaz de Escritorio:** Haz doble clic en **"Extractor de Seguidores (Escritorio)"**. Se abrirá una ventana limpia en el centro de tu pantalla (sin molestas consolas negras detrás).
+
+## Instalador para Terceros (.exe)
+
+Si deseas compartir esta herramienta con otras personas (clientes, equipo) que **no tienen conocimientos técnicos ni Python instalado**, puedes enviarles el instalador independiente:
+
+1. Ve a la carpeta `Output/` dentro de este proyecto.
+2. Copia el archivo `Setup_DataExtractor.exe` y envíalo a quien lo necesite.
+3. Este archivo es un instalador clásico de Windows que le preguntará al usuario dónde quiere instalar el programa y le creará accesos directos automáticamente. *¡No requiere instalar nada más!*
 
 ---
 
-## Instalación y Uso
+## Ejecución Manual (Para Desarrolladores)
 
-### 1. Clonar e Instalar Dependencias
-Instala la biblioteca requerida:
+Si prefieres lanzar las herramientas manualmente desde la consola de comandos, abre la terminal en esta carpeta y utiliza:
+
+- **Para la versión Web:**
+  ```bash
+  python app.py
+  ```
+  *(Luego entra a http://127.0.0.1:5000 en tu navegador)*
+
+- **Para la versión de Escritorio:**
+  ```bash
+  python gui_app.py
+  ```
+
+### Dependencias (Si se instalan manualmente)
 ```bash
-pip install instaloader
+pip install instaloader selenium webdriver-manager flask customtkinter
 ```
 
-### 2. Configurar el Script
-Abre el archivo `extractor.py` (o `extractor_selenium.py`) y configura las variables del bloque de configuración:
-```python
-USUARIO_SECUNDARIO = "tu_usuario_instagram"
-CONTRASENA = "tu_contrasena"
-CUENTA_OBJETIVO = "cuenta_a_extraer_seguidores"
-```
-> [!WARNING]
-> Se recomienda encarecidamente utilizar una **cuenta secundaria** (de prueba o "bot") para realizar la extracción, ya que Instagram puede penalizar el uso de scripts automatizados si se superan los límites de consultas permitidos.
-
-### 3. Ejecución
-Ejecuta el script desde tu terminal:
-```bash
-python extractor.py
-```
-Al finalizar, se guardará un archivo llamado `seguidores_[cuenta_objetivo].csv` en el directorio actual.
+---
+*Herramienta desarrollada para automatización de análisis de datos y OSINT en redes sociales.*

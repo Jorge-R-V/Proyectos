@@ -9,30 +9,20 @@ import os
 import re
 import random
 
-# --- CONFIGURACIÓN ---
-CUENTA_OBJETIVO = "dtf.nometro"
-ARCHIVO_OUTPUT = f"seguidores_TOTAL_{CUENTA_OBJETIVO}.csv"
-
-def configurar_driver():
-    print("Abriendo Google Chrome...")
+def configurar_driver(log_callback=print):
+    log_callback("Abriendo Google Chrome...")
     chrome_options = Options()
+    # Para que el navegador no se cierre inmediatamente si hay un error
+    chrome_options.add_experimental_option("detach", True)
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
 
-def captura_profunda(driver):
-    print("\n" + "@"*60)
-    print(" ¡EXTRACCIÓN PROFUNDA ACTIVADA! ")
-    print("@"*60)
-    print("1. Logueate e ir al perfil.")
-    print(f"2. Abre la lista de SEGUIDORES.")
-    print("@"*60)
-    input("\nCUANDO LA LISTA ESTÉ EN PANTALLA, presiona ENTER AQUÍ...")
-
+def extraer_seguidores_selenium(driver, cuenta_objetivo, output_file, log_callback=print, progress_callback=None):
     lista_usuarios = set()
-    print("\nESCANEANDO CADA RINCÓN DEL CÓDIGO... (Buscando patrones)")
+    log_callback("\nESCANEANDO CADA RINCÓN DEL CÓDIGO... (Buscando patrones)")
     
     try:
-        with open(ARCHIVO_OUTPUT, mode='w', newline='', encoding='utf-8') as file:
+        with open(output_file, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(['Username'])
             
@@ -41,24 +31,23 @@ def captura_profunda(driver):
                 html = driver.page_source
                 
                 # PATRONES DE BÚSQUEDA MÚLTIPLES:
-                # 1. Links: href="/usuario/"
-                # 2. JSON: "username":"usuario"
-                # 3. Textos sueltos que parecen usuarios
                 matches = re.findall(r'href="/([a-zA-Z0-9\._]+)/"', html)
                 matches += re.findall(r'"username":"([a-zA-Z0-9\._]+)"', html)
                 
                 nuevos = 0
                 for uname in matches:
-                    if uname not in ["reels", "explore", "direct", "accounts", "emails", "legal", "about", "p", "tv", "tags", CUENTA_OBJETIVO]:
+                    if uname not in ["reels", "explore", "direct", "accounts", "emails", "legal", "about", "p", "tv", "tags", cuenta_objetivo]:
                         if 3 < len(uname) < 30 and uname not in lista_usuarios:
                             lista_usuarios.add(uname)
                             writer.writerow([uname])
                             file.flush()
                             nuevos += 1
-                            print(f"[{len(lista_usuarios)}] {uname}")
+                            
+                            log_callback(f"[{len(lista_usuarios)}] {uname}")
+                            if progress_callback:
+                                progress_callback(len(lista_usuarios), uname)
                 
                 # SCROLL AGRESIVO
-                # Intentamos scroll en la página y en cualquier modal
                 driver.execute_script("window.scrollBy(0, 600);")
                 driver.execute_script(
                     "document.querySelectorAll('div[role=\"dialog\"] div').forEach(d => {"
@@ -72,17 +61,8 @@ def captura_profunda(driver):
                 if nuevos == 0 and i > 5:
                     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-    except KeyboardInterrupt:
-        print("\nGuardando...")
     except Exception as e:
-        print(f"Error: {e}")
-
-if __name__ == "__main__":
-    browser = configurar_driver()
-    try:
-        captura_profunda(browser)
+        log_callback(f"Error: {e}")
     finally:
-        print(f"\nEXTRACCIÓN COMPLETADA. Resultados en: {ARCHIVO_OUTPUT}")
-        print(f"Total usuarios extraídos: {len(os.listdir('.'))}")
-        input("\nPresiona ENTER para cerrar...")
-        browser.quit()
+        log_callback(f"\nEXTRACCIÓN COMPLETADA. Resultados temporales guardados.")
+
